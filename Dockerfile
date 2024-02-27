@@ -16,10 +16,3 @@ COPY . .
 # Build the React app and Storybook
 RUN npm run build-storybook
 
-# Start NGINX server to serve the built React app and Storybook
-FROM nginx:latest
-COPY --from=build /app/storybook-static /usr/share/nginx/html
-EXPOSE 80
-
-# Command to start NGINX and keep it running in the foreground
-CMD ["nginx", "-g", "daemon off;"]
