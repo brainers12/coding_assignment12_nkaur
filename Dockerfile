@@ -2,7 +2,7 @@
 FROM node:latest AS build
 
 # Set the working directory inside the container
-WORKDIR /my-component-library
+WORKDIR /my-component-library/src/components/
 
 # Copy package.json and package-lock.json to the working directory
 COPY package.json package-lock.json ./
@@ -14,5 +14,6 @@ RUN npm install
 COPY . .
 
 # Build the React app and Storybook
-RUN npm run build-storybook
+CMD  ["npm", "run", "storybook"]
 
+EXPOSE 6006
